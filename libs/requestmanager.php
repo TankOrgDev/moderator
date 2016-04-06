@@ -220,7 +220,7 @@ function create_request() {
                                 . "'$message','$address','$location','$requestdate',"
                                 . "'$date','$latitide','$logitude','$duration','NC','$language','$meetingType')";
         $query_log="INSERT INTO t_help_request_log(Id,UserId ,Datetime,Status,VolunteerId,Mid,InternalStatus) ".
-            " VALUES ( ".$reqId .",".$UsrId.",'".$date."','NC',".$vid.",".$mId.",'BMC')";
+            " VALUES ( ".$reqId .",".$UsrId.",'".$date."','NC',".$vid.",".$mId.",'BMNC')";
         $result=  update_query($sql);
         if($result)
         {

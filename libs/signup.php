@@ -1,31 +1,62 @@
 <?php
 date_default_timezone_set('Asia/Kolkata');
 include 'dbconnection.php';
+echo "shashi";
 function signup()
 {
+    echo "are u happy";
     $dbHelper=new DB();
     $conn=$dbHelper->connect();
     //$abc->close();
     $firstname = isset($_POST["fname"])? mysqli_real_escape_string($conn,$_POST["fname"]):'';
+    //echo "$firstname";
     $lastname = isset($_POST["lname"])? mysqli_real_escape_string($conn,$_POST["lname"]):'';
+    //echo "$lastname";
     $email = isset($_POST["email"])? mysqli_real_escape_string($conn,$_POST["email"]):'';
+    //echo "$email";
     $phone = isset($_POST["phone"])? mysqli_real_escape_string($conn,$_POST["phone"]):'';
+    //echo "$phone";
     $ephone = isset($_POST["ephone"])? mysqli_real_escape_string($conn,$_POST["ephone"]):'';
+    //echo "$ephone";
     $sex = isset($_POST["sex"])? mysqli_real_escape_string($conn,$_POST["sex"]):'';
+    //echo "$sex";
     $pwd = isset($_POST["passwd"])? mysqli_real_escape_string($conn,$_POST["passwd"]):'';
     $dob = isset($_POST["dob"])? mysqli_real_escape_string($conn,$_POST["dob"]):'';
+    //echo "date of birth $dob";
+    $stblind = isset($_POST["stblind"])? mysqli_real_escape_string($conn,$_POST["stblind"]):'';
+    //echo "status of blindness $stblind";
+    $stmobility = isset($_POST["stmobility"])? mysqli_real_escape_string($conn,$_POST["stmobility"]):'';
+    //echo "status of the mobility $stmobility";
+    $optechno = isset($_POST["optechno"])? mysqli_real_escape_string($conn,$_POST["optechno"]):'';
+    //echo "optinal_technology $optechno";
+    $hobies = isset($_POST["hobies"])? mysqli_real_escape_string($conn,$_POST["hobies"]):'';
+    //echo "hobies are $hobies";
     $language = isset($_POST["lang"])? mysqli_real_escape_string($conn,$_POST["lang"]):'';
+    //echo "lang $language";
     $planguage = isset($_POST["plang"])? mysqli_real_escape_string($conn,$_POST["plang"]):'';
+    //echo "planguage are $planguage";
     $profession = isset($_POST["profession"])? mysqli_real_escape_string($conn,$_POST["profession"]):'';
+    //echo "profession are $profession";
     $qualification = isset($_POST["qualification"])? mysqli_real_escape_string($conn,$_POST["profession"]):'';
+    //echo "qualification are $qualification";
     $iname = isset($_POST["iname"])? mysqli_real_escape_string($conn,$_POST["iname"]):'';
+    //echo "iname is the $iname";
     $pcode = isset($_POST["pincode"])? mysqli_real_escape_string($conn,$_POST["pincode"]):'';
+    //echo "pincode is $pcode";
     $paddress = isset($_POST["paddress"])? mysqli_real_escape_string($conn,$_POST["paddress"]):'';
+    //echo "permanent address is the $paddress";
     $taddress = isset($_POST["taddress"])? mysqli_real_escape_string($conn,$_POST["taddress"]):'';
+    //echo "temporary address $taddress";
     $place1= isset($_POST["latitude"])? mysqli_real_escape_string($conn,$_POST["latitude"]):'';
+    //echo "place1 $place1";
     $place2= isset($_POST["longitude"])? mysqli_real_escape_string($conn,$_POST["longitude"]):'';
+    //echo "place 2 is $place2";
     $location=isset($_POST["autocomplete"])? mysqli_real_escape_string($conn,$_POST["autocomplete"]):'';
+    //echo "location is $location";
+    $dream = isset($_POST["dream"])? mysqli_real_escape_string($conn,$_POST["dream"]):'';
+    //echo " dream is the $dream"; 
     $signup = isset($_POST["signup"])? mysqli_real_escape_string($conn,$_POST["signup"]):'';
+    //echo "sigup status $signup";
     /*$firstname = isset($_POST["fname"])? $_POST["fname"]:'';
     $lastname = isset($_POST["lname"])? $_POST["lname"]:'';
     $email = isset($_POST["email"])? $_POST["email"]:'';
@@ -39,7 +70,6 @@ function signup()
     $pwd=  password_hash($pwd, PASSWORD_DEFAULT);
     if($signup=="Signup")
     {
-	
 	$data['Status'] = array(
         array("DBStatus" => "2", "Message" => "Values are Empty")
             );
@@ -78,9 +108,13 @@ function signup()
                             } 
                             else
                             {
-                               $id = $result1[0]['id']; 
+			      echo "ur in insertion stage";
+                               $id = $result1[0]['id'];
+ 			       echo "id is the $id"; 
                                $bid=intval($id)+1;
+                                echo "bid value $bid";
                                $date = date('Y-m-d H:i:s');
+                               echo "date is the and time $date";
                                $rand=rand(100000,100000000);
                                $sql="INSERT INTO m_user("
                                                         ."user_id"
@@ -93,6 +127,11 @@ function signup()
                                                         .",gender"
                                                         .",language"
                                                         .",planguage"
+							.",blindness"
+							.",mobility"
+							.",technology"
+							.",hobbies"
+							.",dream"
                                                         .",occupation"
                                                         .",qualification"
                                                         .",institution"
@@ -112,7 +151,7 @@ function signup()
                                                        . "( ".$bid.",'".$firstname."',"
                                                        . "'".$lastname."','".$email."','".$phone."','"
                                                        . "".$ephone."','".$dob."','".$sex."','".$language."',"
-                                                       . "'".$planguage."','".$profession."','".$qualification."','".$iname."',"
+                                                       . "'".$planguage."','".$stblind."','".$stmobility."','".$optechno."','".$hobies."','".$dream."','".$profession."','".$qualification."','".$iname."',"
                                                        . "'".$paddress."','".$taddress."','".$pcode."','".$location."',"
                                                        . "'".$place1."','".$place2."','','".$date."',"
                                                        . "'C','N','1')";
